@@ -1,10 +1,20 @@
-const rows = [
-  { label: "Net price (unit)", value: "€24.00" },
-  { label: "Subtotal (1x)", value: "€24.00" },
-  { label: "VAT (19%)", value: "€4.56" },
-];
+"use client";
+
+import { useDesigner } from "../state/designer-context";
+import { formatEuro } from "../state/model";
+import { VAT_RATE_LABEL } from "../state/constants";
 
 export default function PriceOverview() {
+  const { state } = useDesigner();
+  const { pricing } = state;
+  const quantity = state.product.quantity;
+
+  const rows = [
+    { label: "Net price (unit)", value: formatEuro(pricing.unitPrice) },
+    { label: `Subtotal (${quantity}x)`, value: formatEuro(pricing.subtotal) },
+    { label: `VAT (${VAT_RATE_LABEL})`, value: formatEuro(pricing.vat) },
+  ];
+
   return (
     <section className="px-5 pb-5 pt-5">
       <h3 className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
@@ -31,7 +41,7 @@ export default function PriceOverview() {
             Total including VAT,
           </span>
           <span className="text-sm font-semibold tabular-nums text-zinc-900">
-            €28.56
+            {formatEuro(pricing.total)}
           </span>
         </div>
         <p className="mt-1 text-xs text-zinc-500">plus shipping.</p>
@@ -40,7 +50,7 @@ export default function PriceOverview() {
       <div className="mt-4 space-y-2">
         <button
           type="button"
-          className="flex h-10 w-full items-center justify-center rounded-lg bg-green-600 text-sm font-semibold text-white"
+          className="flex h-10 w-full items-center justify-center rounded-lg bg-green-500 text-sm font-semibold text-white"
         >
           Add to Cart
         </button>

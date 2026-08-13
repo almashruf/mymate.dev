@@ -58,9 +58,9 @@ input[type="range"]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 9999px;
-  background: #16a34a;
+  background: #22c55e;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px #16a34a;
+  box-shadow: 0 0 0 1px #22c55e;
   cursor: pointer;
 }
 
@@ -68,8 +68,8 @@ input[type="range"]::-moz-range-thumb {
   height: 14px;
   width: 14px;
   border-radius: 9999px;
-  background: #16a34a;
+  background: #22c55e;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px #16a34a;
+  box-shadow: 0 0 0 1px #22c55e;
   cursor: pointer;
 }
